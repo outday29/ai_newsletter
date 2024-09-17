@@ -1,0 +1,10 @@
+pydantic
+pydantic-settings
+loguru
+together
+openai
+praw
+newspaper3k
+lxml[html_clean]
+streamlit
+fireworks-ai
