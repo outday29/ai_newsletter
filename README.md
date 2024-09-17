@@ -2,6 +2,8 @@
 
 This project is a personal AI-powered tool for scraping news from several news and social media platform such as X and Reddit.
 
+This is an improvement of my [previous project](https://github.com/outday29/reddit_summarizer).
+
 ## Setup
 
 First, clone this repository into your system.
