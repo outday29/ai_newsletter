@@ -36,3 +36,7 @@ After that, start the Streamlit app.
 ```bash
 streamlit run main.py
 ```
+
+## Screenshot
+
+![screenshot](./examples/screenshot.png)
