@@ -236,7 +236,7 @@ class RedditScraper(BaseModel):
         truncated_comments = sorted(
             truncated_comments, key=lambda c: c.score, reverse=True
         )[:10]
-        return Post(
+        post = Post(
             author=subreddit_obj.author.name if subreddit_obj.author else None,
             comments=self._parse_comments(truncated_comments),
             content=self._parse_submission_content(subreddit_obj),
@@ -246,6 +246,19 @@ class RedditScraper(BaseModel):
             title=subreddit_obj.title,
             url=subreddit_obj.permalink,
         )
+        # Clean post
+        post.author = post.author.replace("’", "'")
+        post.title = post.title.replace("’", "'")
+        for content in post.content.contents:
+            if isinstance(content, Text):
+                content.text = content.text.replace("’", "'")
+
+        for comment in post.comments:
+            for content in comment.content.contents:
+                if isinstance(content, Text):
+                    content.text = content.text.replace("’", "'")
+
+        return post
 
 
 reddit_scraper = RedditScraper()
